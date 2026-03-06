@@ -130,7 +130,7 @@ Task: Please analyze this: {{input}} and provide the quote.
 * **选择插件**：搜索并添加 `Google Sheets` -> `getSpreadsheet` 动作。
 * **授权**：点击节点上的授权按钮，绑定你的 Google 账号。
 * **配置参数**：
-* `spreadsheetId`：填入你表格 URL 中的长串 ID。
+* `spreadsheetId`：填入你表格 URL中，在`https://docs.google.com/spreadsheets/d/` 和`/edit`的长串 ID。
 * `range`：填入数据范围，如 `Sheet1!A1:E1000`。
 
 ![coze workflow get price step](imgs/coze_handy_workflow_getspreadsheetValues.png)
