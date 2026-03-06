@@ -169,7 +169,7 @@ Task: Please analyze this: {{input}} and provide the quote.
 * 新建一个 **Agent**（机器人）并命名。
 * 在 Agent 编辑页面的 `Arrangement` 区域，点击 **+ Click to add chatflow**，选中你刚才搭建好的 Workflow。
 
-![完成的agent分享链接](https://www.coze.com/s/Za8WrUhWr/)
+[完成的agent分享链接](https://www.coze.com/s/Za8WrUhWr/)，注册coze后应该可以打开。
 
 
 ![coze workflow 发布](imgs/coze_bot_publish.png)
