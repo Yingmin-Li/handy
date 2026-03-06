@@ -139,7 +139,7 @@ Task: Please analyze this: {{input}} and provide the quote.
 * `identified_item` (String)：引用 LLM 节点的输出。
 * `price_list` (Object/String)：引用 Google Sheets 节点的输出。
 * **输出 (Output)**：添加 `message` (String)。
-* **代码内容** 在 ![coze_code.py](coze_code.py) 里面，ai帮忙写的。
+* **代码内容** 在 [coze_code.py](coze_code.py) 里面，ai帮忙写的。
 
 ![coze workflow code step](imgs/coze_handy_workflow_code.png)
 
@@ -158,8 +158,6 @@ Task: Please analyze this: {{input}} and provide the quote.
 ![coze workflow end step](imgs/coze_handy_workflow_end.png)
 
 ---
-
-
 
 
 ## 第三阶段：绑定 Agent 与发布上线
