@@ -24,7 +24,7 @@ help - How to use this bot
 price_list - View the full price list
 ```
 
-![开通测试bot截图](img/telegram_create_bot.png)
+![开通测试bot截图](imgs/telegram_create_bot.png)
 
 
 ### 3. 注册逻辑引擎 (Coze)
@@ -34,7 +34,7 @@ price_list - View the full price list
 
 Coze免费用户每天有10个credit，如果选择便宜够用的的大模型(GPT-4o mini)，可以调用100次。 在coze界面左下角点击credit图标，在弹出的subscription plan选择的时候有每个模型的调用价格和每日次数限制。
 
-![coze subscriptiotn plan截图](img/coze_subscription_plan.png)
+![coze subscriptiotn plan截图](imgs/coze_subscription_plan.png)
 
 ---
 
@@ -142,7 +142,7 @@ Task: Please analyze this: {{input}} and provide the quote.
 
 ---
 
-![coze工作流](img/coze_handy_workflow_overview.png)
+![coze工作流](imgs/coze_handy_workflow_overview.png)
 
 
 ## 第三阶段：绑定 Agent 与发布上线
@@ -167,6 +167,6 @@ Task: Please analyze this: {{input}} and provide the quote.
 
 Telegram 测试结果
 
-![测试 help和价格表](img/telegram-test-1.png)
-![测试 中文需求遛狗和扫雪](img/telegram-test-2.png)
-![测试 英文需求扫雪](img/telegram-test-3.png)
+![测试 help和价格表](imgs/telegram-test-1.png)
+![测试 中文需求遛狗和扫雪](imgs/telegram-test-2.png)
+![测试 英文需求扫雪](imgs/telegram-test-3.png)
