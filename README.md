@@ -183,7 +183,7 @@ Task: Please analyze this: {{input}} and provide the quote.
 * 点击页面右上角的最终 **Publish** 按钮。
 * 打开你的 Telegram，找到你的机器人，发送 `/help` 或一张带雪的图片，系统即可自动回复。
 
-![coze workflow 发布到Telegram](imgs/coze_bot_publish_telegram.png)
+![coze workflow 发布到Telegram 频道](imgs/coze_bot_publish-channels.png)
 
 Telegram 测试结果
 
