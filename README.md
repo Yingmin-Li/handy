@@ -44,7 +44,7 @@ Coze免费用户每天有10个credit，如果选择便宜够用的的大模型(G
 
 在 Coze 工作空间内点击左边菜单的Library, 再选页面中间上方的Workflow菜单，点击右上角紫色的 **+Resources** -> **Workflow**， 选择名字，填写功能描述，点击紫色confirm按钮生成一个空白workflow，并进入编辑页面。
 
-一下是完成的工作流概览。
+以下是完成的工作流概览。
 
 ![coze工作流概览](imgs/coze_handy_workflow_overview.png)
 
