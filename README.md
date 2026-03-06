@@ -34,13 +34,15 @@ price_list - View the full price list
 
 Coze免费用户每天有10个credit，如果选择便宜够用的的大模型(GPT-4o mini)，可以调用100次。 在coze界面左下角点击credit图标，在弹出的subscription plan选择的时候有每个模型的调用价格和每日次数限制。
 
-![coze subscriptiotn plan截图](imgs/coze_subscription_plan.png)
+![coze subscriptiotn plan](imgs/coze_subscription_plan.png)
 
 ---
 
 ## 第二阶段：核心工作流 (Workflow) 搭建
 
 在 Coze 工作空间内点击左边菜单的Library, 再选页面中间上方的Workflow菜单，点击右上角紫色的 **+Resources** -> **Workflow**， 选择名字，填写功能描述，点击紫色confirm按钮生成一个空白workflow，并进入编辑页面。
+
+![coze工作流概览](imgs/coze_handy_workflow_overview.png)
 
 
 按照以下顺序拖拽节点并配置：
@@ -49,12 +51,16 @@ Coze免费用户每天有10个credit，如果选择便宜够用的的大模型(G
 * **作用**：接收用户在 Telegram 发送的消息或图片。
 * **配置**：系统默认会有一个 `USER_INPUT` 变量，类型为 `String`，保持默认即可。
 
+![coze workflow start step](imgs/coze_handy_workflow_start.png)
+
 ### 节点 2：Condition (条件分流)
 * **作用**：拦截用户的指令文本，避免文字进入图片识别流程。
 * **配置**：
 * **Condition 1**：选择 `Start.USER_INPUT`，判断条件选择 **Contains**，输入值填入 `/help`。
 * **Condition 2**：选择 `Start.USER_INPUT`，判断条件选择 **Contains**，输入值填入 `/price_list`。
 * **Else**：保持默认，用于处理正常发图片估价的请求。
+
+![coze workflow condition step](imgs/coze_handy_workflow_condition.png)
 
 ### 节点 3 & 4：Code (指令文本输出)
 * **作用**：针对 `/help` 和 `/price_list` 输出固定话术。
@@ -70,12 +76,16 @@ def main(args):
 	return {"message": "🛠️ **Handy-Bot Help**\n\nSend me a photo of your driveway/sidewalk, and tell me the depth of the snow (e.g. 15cm) to get an instant quote in CAD."}
 ```
 
+![coze workflow code_1 step](imgs/coze_handy_workflow_code_1.png)
+
 * **Code_2 代码 (`/price_list`)**：
 
 ```python
 def main(args):
 	return {"message": "📋 **Price List**\n\n- Single Driveway: $30/visit\n- Double Driveway: $50/visit\n- Sidewalk: $20/visit\n*(+30% for snow > 15cm)*"}
 ```
+
+![coze workflow code_2 step](imgs/coze_handy_workflow_code_2.png)
 
 ### 节点 5：LLM (大语言模型识别)
 * **连线**：将 Condition 的 `Else` 分支连至 LLM 节点。
@@ -111,6 +121,8 @@ Output Format (Strict JSON):
 Task: Please analyze this: {{input}} and provide the quote.
 ```
 
+![coze workflow LLM step](imgs/coze_handy_workflow_llm.png)
+
 ### 节点 6：Plugin - Google Sheets (读取表格)
 * **连线**：紧接在 LLM 节点之后。
 * **选择插件**：搜索并添加 `Google Sheets` -> `getSpreadsheet` 动作。
@@ -118,6 +130,8 @@ Task: Please analyze this: {{input}} and provide the quote.
 * **配置参数**：
 * `spreadsheetId`：填入你表格 URL 中的长串 ID。
 * `range`：填入数据范围，如 `Sheet1!A1:E1000`。
+
+![coze workflow get price step](imgs/coze_handy_workflow_getspreadsheetValues.png)
 
 ### 节点 7：Code (核心计算逻辑)
 * **连线**：接收 LLM 的识别结果和 Google Sheets 的数据。
@@ -127,6 +141,7 @@ Task: Please analyze this: {{input}} and provide the quote.
 * **输出 (Output)**：添加 `message` (String)。
 * **代码内容** 在 ![coze_code.py](coze_code.py) 里面，ai帮忙写的。
 
+![coze workflow code step](imgs/coze_handy_workflow_code.png)
 
 ### 节点 8：End (终点展示)
 * **连线**：将 Code_1, Code_2, 和核心计算 Code 节点的输出，全部连至此 End 节点。
@@ -140,9 +155,11 @@ Task: Please analyze this: {{input}} and provide the quote.
 3. 依次点击选中三个输入变量`{{help}}{{price_list}}{{estimate}}`。
 4. 确保输入框内显示为三个紧挨着的彩色气泡块，中间**不要**加空格或回车。
 
+![coze workflow end step](imgs/coze_handy_workflow_end.png)
+
 ---
 
-![coze工作流](imgs/coze_handy_workflow_overview.png)
+
 
 
 ## 第三阶段：绑定 Agent 与发布上线
@@ -154,6 +171,9 @@ Task: Please analyze this: {{input}} and provide the quote.
 
 ![完成的agent分享链接](https://www.coze.com/s/Za8WrUhWr/)
 
+
+![coze workflow 发布](imgs/coze_bot_publish.png)
+
 ### 2. 配置 Telegram 渠道
 * 点击 Agent 页面右上角的紫色 **Publish** 按钮。
 * 在发布页面下拉找到 **Channels** 模块。
@@ -164,6 +184,8 @@ Task: Please analyze this: {{input}} and provide the quote.
 ### 3. 正式发布
 * 点击页面右上角的最终 **Publish** 按钮。
 * 打开你的 Telegram，找到你的机器人，发送 `/help` 或一张带雪的图片，系统即可自动回复。
+
+![coze workflow 发布到Telegram](imgs/coze_bot_publish_telegram.png)
 
 Telegram 测试结果
 
