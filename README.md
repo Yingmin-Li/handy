@@ -141,7 +141,7 @@ Task: Please analyze this: {{input}} and provide the quote.
 * `identified_item` (String)：引用 LLM 节点的输出。
 * `price_list` (Object/String)：引用 Google Sheets 节点的输出。
 * **输出 (Output)**：添加 `message` (String)。
-* **代码内容** 在 [coze_code.py](coze_code.py) 里面，ai帮忙写的。
+* **代码内容** 在 [coze_code.py](coze_code.py) 里面，ai帮忙写的, 如果修改报价逻辑，需要修改google sheet里面的数据和[coze_code.py](coze_code.py)。
 
 ![coze workflow code step](imgs/coze_handy_workflow_code.png)
 
