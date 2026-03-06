@@ -1,6 +1,8 @@
 
 # 🛠️ 报价机器人 (Handy-Bot) 完整搭建文档
 
+该机器人全程在Gemini 3.1 Pro指导下完成。
+
 ## 第一阶段：前期准备与账号开通
 
 ### 1. 准备数据源 (Google Sheets)
@@ -184,6 +186,7 @@ Task: Please analyze this: {{input}} and provide the quote.
 * 打开你的 Telegram，找到你的机器人，发送 `/help` 或一张带雪的图片，系统即可自动回复。
 
 ![coze workflow 发布到Telegram 频道](imgs/coze_bot_publish-channels.png)
+
 
 Telegram 测试结果
 
