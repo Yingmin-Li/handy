@@ -9,7 +9,7 @@
 * **表头设置**：在第一行依次填入：`Service_Item`, `Unit`, `Base_Price(CAD)`, `Difficulty_Factor`, `Min_Fee(CAD)`。
 * **录入数据**：填入对应的单价和难度系数规则。此表格将作为整个机器人的唯一价格计算依据。
 
-测试用的google sheet 在,也可以要求AI帮你生成更多的测试数据
+测试用的google sheet 在 [data/handy-commands.xlsx](data/handy-commands.xlsx),也可以要求AI帮你生成更多的测试数据。
 
 ### 2. 获取通讯接口 (Telegram)
 * **账号开通**：下载 Telegram App 并使用手机号注册。
@@ -24,7 +24,7 @@ help - How to use this bot
 price_list - View the full price list
 ```
 
-开通测试bot截图
+![开通测试bot截图](img/telegram_create_bot.png)
 
 
 ### 3. 注册逻辑引擎 (Coze)
@@ -33,6 +33,8 @@ price_list - View the full price list
 * **创建空间**：在左侧导航栏点击 **Workspace**，新建一个项目空间。
 
 Coze免费用户每天有10个credit，如果选择便宜够用的的大模型(GPT-4o mini)，可以调用100次。 在coze界面左下角点击credit图标，在弹出的subscription plan选择的时候有每个模型的调用价格和每日次数限制。
+
+![coze subscriptiotn plan截图](img/coze_subscription_plan.png)
 
 ---
 
@@ -123,7 +125,7 @@ Task: Please analyze this: {{input}} and provide the quote.
 * `identified_item` (String)：引用 LLM 节点的输出。
 * `price_list` (Object/String)：引用 Google Sheets 节点的输出。
 * **输出 (Output)**：添加 `message` (String)。
-* **代码内容** 在 coze_code.py 里面，ai帮忙写的
+* **代码内容** 在 ![coze_code.py](coze_code.py) 里面，ai帮忙写的。
 
 
 ### 节点 8：End (终点展示)
@@ -140,12 +142,17 @@ Task: Please analyze this: {{input}} and provide the quote.
 
 ---
 
+![coze工作流](img/coze_handy_workflow_overview.png)
+
+
 ## 第三阶段：绑定 Agent 与发布上线
 
 ### 1. 组装 Agent
 * 在 Coze 左侧导航栏点击 **Home** 或 **Development**。
 * 新建一个 **Agent**（机器人）并命名。
 * 在 Agent 编辑页面的 `Arrangement` 区域，点击 **+ Click to add chatflow**，选中你刚才搭建好的 Workflow。
+
+![完成的agent分享链接](https://www.coze.com/s/Za8WrUhWr/)
 
 ### 2. 配置 Telegram 渠道
 * 点击 Agent 页面右上角的紫色 **Publish** 按钮。
@@ -157,3 +164,9 @@ Task: Please analyze this: {{input}} and provide the quote.
 ### 3. 正式发布
 * 点击页面右上角的最终 **Publish** 按钮。
 * 打开你的 Telegram，找到你的机器人，发送 `/help` 或一张带雪的图片，系统即可自动回复。
+
+Telegram 测试结果
+
+![测试 help和价格表](img/telegram-test-1.png)
+![测试 中文需求遛狗和扫雪](img/telegram-test-2.png)
+![测试 英文需求扫雪](img/telegram-test-3.png)
